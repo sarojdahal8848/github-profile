@@ -1,0 +1,38 @@
+.form{
+    display: flex;
+    border: 1px solid gray;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    margin:  2rem 0;
+    width: 50%;
+    padding-left:1rem;
+}
+.search{
+    flex: 1;
+    height: 2rem;
+    border: none;
+    outline: none;
+    width: inherit;
+    background: transparent;
+  }
+
+  .button{
+    background-color: rgb(110, 110, 228);
+    padding: 1rem 1.5rem;
+    border: none;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .button:hover{
+    background-color: rgb(31, 31, 211);
+  }
+
+  @media (max-width:500px) {
+    .button{
+        display: none;
+    }
+  }
+  

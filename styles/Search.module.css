@@ -1,0 +1,29 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  .container{
+    margin: 1rem;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 1fr ;
+    gap: 1rem;
+    overflow-y: hidden;
+  }
+  
+  @media (max-width:700px) {
+    .container{
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width:550px) {
+    .container{
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  
