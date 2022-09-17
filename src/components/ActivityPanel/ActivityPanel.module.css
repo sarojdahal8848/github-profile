@@ -1,8 +1,8 @@
 .container{
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 1rem;
+    padding: 0 1rem;
 }
 .image{
     border-radius: 50%;
@@ -10,5 +10,5 @@
 
 .right > p{
     font-weight: bold;
-    line-height: 10px;
+
 }

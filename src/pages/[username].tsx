@@ -1,4 +1,4 @@
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, GetStaticProps } from "next";
 import { IUserData } from "./";
 import Layout from "../components/Layout/Layout";
 import Image from "next/image";
@@ -10,6 +10,11 @@ import { Tab } from "@headlessui/react";
 import CustomPanel from "../components/CustomPanel/CustomPanel";
 import ActivityPanel from "../components/ActivityPanel/ActivityPanel";
 import ProfileCard from "../components/ProfileCard/ProfileCard";
+import { ParsedUrlQuery } from "querystring";
+
+interface IParams extends ParsedUrlQuery {
+  username: string;
+}
 
 export interface IUserProfileData extends IUserData {
   name: string;
@@ -60,9 +65,13 @@ const UserProfile = ({
   const handleBackClick = () => {
     router.back();
   };
-  console.log(followersData);
+
+  if (!userProfileData || !reposData || !receivedEventsData || !followersData) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
-    <Layout title="saroj">
+    <Layout title={userProfileData.login}>
       <main className={styles.container}>
         <CustomButton title="Back" onClick={handleBackClick} />
         <ProfileDetail userProfileData={userProfileData} />
@@ -142,8 +151,8 @@ const UserProfile = ({
 
 export default UserProfile;
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const { username } = query;
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const { username } = params as IParams;
   const profileRes = await fetch(`https://api.github.com/users/${username}`);
   const userProfileData = await profileRes.json();
 
@@ -171,3 +180,10 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     },
   };
 };
+
+export async function getStaticPaths() {
+  return {
+    paths: [{ params: { username: "sarojdahal8848" } }],
+    fallback: true,
+  };
+}

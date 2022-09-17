@@ -1,4 +1,4 @@
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import styles from "../../styles/Home.module.css";
 import ProfileCard from "../components/ProfileCard/ProfileCard";
@@ -37,7 +37,7 @@ const Home: NextPage<IHomeProps> = ({ data }) => {
 
 export default Home;
 
-export const getServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch("https://api.github.com/users");
   const data = await res.json();
 
