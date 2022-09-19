@@ -20,7 +20,7 @@ const CustomPanel = ({ val }: ICustomPanelProps) => {
           <h4>{val.language}</h4>
         </div>
         <p>Forks: {val.forks}</p>
-        <p>Starts: {val.stargazers_count}</p>
+        <p>Stars: {val.stargazers_count}</p>
       </div>
     </div>
   );
